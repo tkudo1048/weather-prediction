@@ -16,6 +16,7 @@ code/
   seed_robustness.py                 seedを変えた再実行とブートストラップによる差の検証
   tune_same_space.py                 Optunaと同じ探索空間でのGridSearchCV / RandomizedSearchCV
   gb_balanced_weights.py             勾配ブースティングにもクラス重みを付けて再評価(ロジスティック回帰との公平な比較)
+  untested_items.py                  LightGBM・XGBoost、ロジスティック回帰の調整、クラス重みの強さを試して、ロジスティック回帰と比較
   ablation_evening_features.py       夜に作れる特徴量(今日の天気概況・降雪を除く)での再評価
   train_final.py                     全データで再学習し、モデルを保存
   fetch_realtime.py                  気象庁の10分ごとの観測を取得し、日別の特徴量に集計
@@ -45,6 +46,7 @@ PYTHONPATH=code python code/compare_models.py
 ```
 
 チューニング系のスクリプトは `compare_models.py` の関数を読み込むため、`PYTHONPATH=code` を付けてプロジェクト直下から実行します。
+`untested_items.py` が使う LightGBM・XGBoost は、macOSでは OpenMP のライブラリ(libomp)が必要です。Homebrew で `libomp` を入れるのが一般的な方法です。
 一部のスクリプトは `research/` 以下に結果CSVを書き出します(このリポジトリには `research/gb_optuna_trials.csv` のみ含めています)。
 
 ## データ
