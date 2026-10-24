@@ -19,6 +19,7 @@ __pycache__/
 # 気象庁の10分データ・直近の日別データ(再取得できるためGitHubには含めない)
 /data/raw/amedas_10min/
 /data/raw/recent/
+/data/raw/nwp/
 /slides/
 
 # 仮想環境

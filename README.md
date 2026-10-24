@@ -22,6 +22,15 @@ code/
   fetch_realtime.py                  気象庁の10分ごとの観測を取得し、日別の特徴量に集計
   jma_daily.py                       直近の日別データを取得・数値化(前処理と同じ規則)
   predict_tonight.py                 夜に翌日の天気(4クラスの確率)を予測してログに記録
+  train_hirosaki.py                  弘前の翌日の最高・最低気温とルール天気のモデルを学習して保存
+  hirosaki_tonight.py                夜に弘前の予測(最高・最低気温、ルール天気)を行い、別のログに記録
+  score_hirosaki.py                  弘前の予測を、後日の実測と照合
+  fetch_nwp.py                       数値予報(気象庁GSM)の過去の予報値を、青森の格子点で取得して保存
+  fetch_nwp_hirosaki.py              同、弘前の格子点
+  nwp_features.py                    GSMの予報値を日別の特徴量(11個)に集計する共通部品(学習・評価・夜の予測で共通)
+  nwp_features_eval.py               GSMの予報値を足すと、青森の翌日の天気の予測が良くなるかの評価
+  hirosaki_weather_temp.py           弘前の翌日のルール天気と最高・最低気温の評価
+  check_nwp_archive.py               夜に取得した予報値と、後日のアーカイブの突き合わせ
   score_predictions.py               記録した予測を、後日の実際の天気と照合
   check_realtime_features.py         10分集計の特徴量と気象庁の日別値のずれを確認
   sensitivity_realtime_bias.py       特徴量のずれが予測クラスに与える影響を測定
@@ -48,6 +57,14 @@ PYTHONPATH=code python code/compare_models.py
 チューニング系のスクリプトは `compare_models.py` の関数を読み込むため、`PYTHONPATH=code` を付けてプロジェクト直下から実行します。
 `untested_items.py` が使う LightGBM・XGBoost は、macOSでは OpenMP のライブラリ(libomp)が必要です。Homebrew で `libomp` を入れるのが一般的な方法です。
 一部のスクリプトは `research/` 以下に結果CSVを書き出します(このリポジトリには `research/gb_optuna_trials.csv` のみ含めています)。
+
+## 数値予報(GSM)の利用
+
+夜の予測には、気象庁の全球モデル(GSM)の「約48時間前に出た翌日の予報値」を特徴量として使っています。取得先は Open-Meteo の Previous Runs API(無料版は非商用が条件、データは CC BY 4.0)です。
+
+- 出典: Open-Meteo(気象庁GSMの予報値を加工して作成)
+- 弘前の「天気」は観測された天気ではなく、観測値(降水量・降雪・日照)から決めたルールの天気です。弘前のアメダスは天気概況を観測していません。
+- 予測は公開せず、自分専用で使っています。
 
 ## データ
 
