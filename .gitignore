@@ -13,14 +13,15 @@ __pycache__/
 .ipynb_checkpoints/
 
 # 個人用の予測ログ・学習済みモデル（公開しない）
-/logs/
-/models/
+/weather-prediction/logs/
+/weather-prediction/models/
 
 # 気象庁の10分データ・直近の日別データ(再取得できるためGitHubには含めない)
-/data/raw/amedas_10min/
-/data/raw/recent/
-/data/raw/nwp/
-/slides/
+/weather-prediction/data/raw/amedas_10min/
+/weather-prediction/data/raw/recent/
+/weather-prediction/data/raw/nwp/
+/weather-prediction/slides/
 
 # 仮想環境
 /.venv/
+/weather-prediction/research
