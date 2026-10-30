@@ -1,27 +1,21 @@
-# note記事・素材はGitHubには含めない(コードのみ公開)
-/drafts/
-/published/
-/ideas/
-/images/
-/templates/
-/research/*
-!/research/gb_optuna_trials.csv
-
 # Python
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
 
 # 個人用の予測ログ・学習済みモデル（公開しない）
-/weather-prediction/logs/
-/weather-prediction/models/
+/logs/
+/models/
 
 # 気象庁の10分データ・直近の日別データ(再取得できるためGitHubには含めない)
-/weather-prediction/data/raw/amedas_10min/
-/weather-prediction/data/raw/recent/
-/weather-prediction/data/raw/nwp/
-/weather-prediction/slides/
+/data/raw/amedas_10min/
+/data/raw/recent/
+/data/raw/nwp/
+/slides/
+
+# 検証の結果CSVは、gb_optuna_trials.csv だけ載せる
+/research/*
+!/research/gb_optuna_trials.csv
 
 # 仮想環境
 /.venv/
-/weather-prediction/research
